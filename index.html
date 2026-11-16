@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>برای دنیل خون‌آشام 🦇</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Tahoma, sans-serif;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+  background:
+    radial-gradient(circle at 20% 20%, #56316f 0%, transparent 35%),
+    radial-gradient(circle at 80% 70%, #263e78 0%, transparent 40%),
+    radial-gradient(circle at 50% 100%, #8b3b79 0%, transparent 40%),
+    linear-gradient(135deg, #100c29, #21123c, #101b3b);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(white 1px, transparent 1.5px),
+    radial-gradient(#f3baff 1px, transparent 1.5px),
+    radial-gradient(#a9d8ff 1px, transparent 1.5px);
+  background-size: 80px 80px, 120px 120px, 170px 170px;
+  background-position: 0 0, 35px 50px, 70px 20px;
+  animation: stars 12s linear infinite;
+}
+
+@keyframes stars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-80px); }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 35px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden { display: none !important; }
+
+h1 {
+  color: #f1c6ff;
+  text-shadow: 0 0 18px #d58aff;
+}
+
+button {
+  border: 1px solid #e6baff;
+  border-radius: 25px;
+  padding: 13px 27px;
+  color: white;
+  background: linear-gradient(135deg, #7544a5, #bd5ca9);
+  font-size: 17px;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 0 15px #a65bd4;
+  margin-top: 20px;
+}
+
+button:active { transform: scale(.94); }
+
+.envelope {
+  position: relative;
+  width: 230px;
+  height: 155px;
+  margin: 30px auto;
+  background: #d99bcf;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 30px #e7a5ff;
+  transition: .7s;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f0bce4;
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  transform-origin: top;
+  transition: .7s;
+  z-index: 2;
+}
+
+.envelope.open::before { transform: rotateX(180deg); }
+
+.envelope::after {
+  content: "♥";
+  position: absolute;
+  top: 48%;
+  left: 43%;
+  color: #8d367e;
+  font-size: 35px;
+  z-index: 3;
+}
+
+.envelope-label {
+  color: #f4d5ff;
+  font-size: 16px;
+}
+
+.countdown {
+  font-size: 75px;
+  color: #f2baff;
+  animation: spin 1s linear infinite;
+  text-shadow: 0 0 25px #e8aaff;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.big-message {
+  font-size: 32px;
+  color: #ffc9f3;
+  animation: appear .7s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: scale(.5); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.fingerprint {
+  font-size: 95px;
+  cursor: pointer;
+  animation: pulse 1.2s infinite;
+  filter: drop-shadow(0 0 15px #e5a4ff);
+}
+
+@keyframes pulse {
+  50% { transform: scale(1.13); }
+}
+
+.new-page {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 35px 18px;
+}
+
+.main-title {
+  font-size: 29px;
+  margin-top: 40px;
+  animation: appear 1s ease;
+}
+
+.subtitle {
+  color: #e4c4ff;
+  margin: 25px 0;
+}
+
+.slide {
+  max-width: 550px;
+  width: 100%;
+  margin: 35px auto;
+  padding: 25px 20px;
+  border: 1px solid #b98bd8;
+  border-radius: 22px;
+  background: rgba(20, 12, 49, .76);
+  box-shadow: 0 0 25px rgba(190, 120, 255, .25);
+  text-align: right;
+  line-height: 2.3;
+  font-size: 17px;
+}
+
+.slide h2 {
+  color: #e8b6ff;
+  text-align: center;
+  margin-top: 0;
+}
+
+.line {
+  opacity: 0;
+  transform: translateY(-18px);
+  transition: opacity .8s ease, transform .8s ease;
+  margin: 13px 0;
+}
+
+.line.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.next-button {
+  display: none;
+  margin: 25px auto;
+}
+
+.next-button.show {
+  display: inline-block;
+  animation: appear .5s ease;
+}
+
+.scary-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background: rgba(5, 2, 18, .97);
+  animation: appear .15s ease;
+}
+
+.scary-text {
+  color: #ffb8f4;
+  font-size: 29px;
+  font-weight: bold;
+  text-shadow: 0 0 20px #ff32d2;
+  animation: shake .35s infinite;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.final-pop {
+  color: #ffb7f1;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 18px #ed72ff;
+  animation: appear .3s ease, shake .4s .3s 2;
+  margin: 20px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="startPage">
+  <h1>یه نامه برای تو... 🦇</h1>
+  <p class="envelope-label">برای باز کردن نامه کلیک کن</p>
+  <div class="envelope" id="envelope" onclick="openLetter()"></div>
+
+  <div id="countdownArea" class="hidden">
+    <div class="countdown" id="countdown">3</div>
+  </div>
+
+  <div id="hello" class="big-message hidden">
+    سلام اسکللل 😂
+  </div>
+
+  <div id="fingerArea" class="hidden">
+    <p>انگشتتو بذار اینجا</p>
+    <div class="fingerprint" onclick="enterWebsite()">☝🏻</div>
+  </div>
+</div>
+
+<div class="new-page hidden" id="newPage">
+  <h1 class="main-title">سلام بر دنیل خون‌آشام 🦇</h1>
+  <p class="subtitle" id="introText">
+    یه داستان کوچولو از روز اول آشناییمون...
+  </p>
+
+  <button id="startSlides" onclick="showSlide(0)">
+    شروع خاطرات
+  </button>
+
+  <div id="slideArea" class="hidden">
+
+    <div class="slide hidden" id="slide0">
+      <h2>اسلاید ۱ ـ روز اول آشنایی</h2>
+      <p class="line">
+        اولین روزی که اومده بودی پیوی من، گفتی:
+        «سلام، سوالی درباره گروه داری؟ من هستم.»
+      </p>
+      <p class="line">
+        من با خودم می‌گفتم:
+        «این دیگه چه خریه؟» 😂
+      </p>
+      <p class="line">
+        بعد یهو منو عضو یه گروه تو فامیلات کردی!
+        با خودم گفتم:
+        «این دیگه چه سمیه خدایا؟» 😂
+      </p>
+      <p class="line">
+        بعد می‌گفتی من فیلم ترسناک می‌بینم خندم می‌گیره؛
+        مثلاً می‌خواستی خفن‌بازی دربیاری 🤣
+      </p>
+      <p class="line">
+        منم الکی خنده فرستادم که ناراحت نشی،
+        ولی ته دلم این بود که خیلی اسکل بودی...
+      </p>
+      <button class="next-button" onclick="nextSlide(0)">اسلاید بعد</button>
+    </div>
+
+    <div class="slide hidden" id="slide1">
+      <h2>اسلاید ۲ ـ تغییر شخصیت دنیل</h2>
+      <p class="line">
+        همش می‌گفتم:
+        «ای خدا، چرا از پیوی من نمیره؟» 😂
+      </p>
+      <p class="line">
+        بعد که یکم گذشت، گفتم:
+        «اِ، بچه خوبیه!»
+      </p>
+      <p class="line">
+        اولش خجالتی بودی، بعد یهو ۶۰ درجه تغییر کردی 😂
+      </p>
+      <p class="line">ولی بازم بچه خوبیا!</p>
+      <p class="line">
+        تازه، کل زندگیت رو می‌دونم؛
+        اینو تهدید در نظر بگیر 😂🔪
+      </p>
+      <button class="next-button" onclick="showScary()">اسلاید بعد</button>
+    </div>
+
+    <div class="slide hidden" id="slide2">
+      <h2>اسلاید ۳ ـ اعترافات خون‌آشامی</h2>
+      <p class="line">خب دنیل خون‌آشام...</p>
+      <p class="line">
+        راستش رو بخوای، فکر نمی‌کردم یه روزی
+        از یه آدمی که اولش فکر می‌کردم خیلی اسکله،
+        به کسی تبدیل بشی که از حرف زدن باهاش خوشم بیاد 😂
+      </p>
+      <p class="line">
+        شاید اولش عجیب شروع شد،
+        ولی خب خوشحالم که باهات آشنا شدم.
+      </p>
+      <p class="line">امیدوارم همیشه همین‌جوری بمونی.</p>
+      <button class="next-button" onclick="nextSlide(2)">اسلاید بعد</button>
+    </div>
+
+    <div class="slide hidden" id="slide3">
+      <h2>اسلاید ۴ ـ پایان نامه 🦇</h2>
+      <p class="line">خب، دیگه حرفی نمونده...</p>
+      <p class="line">
+        توهم دمت گرم! چه سایت خفنی ساختی!
+        من بلد نیستم، خوب نشد ببخشیدا 😂
+      </p>
+      <div id="finalPop" class="final-pop hidden">
+        می‌دونم خیلیم خوب شد سایتم 😂
+      </div>
+      <p class="line">امیدوارم لبخند آورده باشه روی لبت.</p>
+      <p class="line">مراقب خودت باش، دنیل!</p>
+      <p class="line">قدرشو بدون جناب خون‌آشام 🦇</p>
+      <button class="next-button" onclick="finishWebsite()">پایان</button>
+    </div>
+
+  </div>
+
+  <div id="endMessage" class="hidden">
+    <h1>پایان ماجرا 🦇</h1>
+    <p>امیدوارم خوشت اومده باشه، دنیل!</p>
+  </div>
+</div>
+
+<div class="scary-screen hidden" id="scaryScreen">
+  <div class="scary-text">
+    حال کردی چه سایتی برات ساختم؟ 😈
+  </div>
+  <button onclick="continueToSlide3()">حالا برو بعدی...</button>
+</div>
+
+<script>
+let started = false;
+
+function openLetter() {
+  if (started) return;
+  started = true;
+
+  document.getElementById("envelope").classList.add("open");
+  document.querySelector(".envelope-label").classList.add("hidden");
+
+  setTimeout(() => {
+    document.getElementById("countdownArea").classList.remove("hidden");
+
+    let number = 3;
+    const count = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+      number--;
+
+      if (number > 0) {
+        count.textContent = number;
+      } else {
+        clearInterval(timer);
+        document.getElementById("countdownArea").classList.add("hidden");
+        document.getElementById("hello").classList.remove("hidden");
+
+        setTimeout(() => {
+          document.getElementById("hello").classList.add("hidden");
+          document.getElementById("fingerArea").classList.remove("hidden");
+        }, 2000);
+      }
+    }, 1000);
+  }, 700);
+}
+
+function enterWebsite() {
+  document.getElementById("startPage").classList.add("hidden");
+  document.getElementById("newPage").classList.remove("hidden");
+}
+
+function showSlide(index) {
+  document.getElementById("startSlides").classList.add("hidden");
+  document.getElementById("introText").classList.add("hidden");
+  document.getElementById("slideArea").classList.remove("hidden");
+
+  const slide = document.getElementById("slide" + index);
+  slide.classList.remove("hidden");
+
+  const lines = slide.querySelectorAll(".line");
+  const button = slide.querySelector(".next-button");
+
+  lines.forEach(line => line.classList.remove("show"));
+  button.classList.remove("show");
+
+  lines.forEach((line, i) => {
+    setTimeout(() => {
+      line.classList.add("show");
+
+      if (i === lines.length - 1) {
+        setTimeout(() => {
+          button.classList.add("show");
+        }, 900);
+      }
+    }, 2500 * (i + 1));
+  });
+
+  if (index === 3) {
+    setTimeout(() => {
+      document.getElementById("finalPop").classList.remove("hidden");
+    }, 2500);
+  }
+}
+
+function nextSlide(current) {
+  document.getElementById("slide" + current).classList.add("hidden");
+  showSlide(current + 1);
+}
+
+function showScary() {
+  document.getElementById("slide1").classList.add("hidden");
+  document.getElementById("scaryScreen").classList.remove("hidden");
+}
+
+function continueToSlide3() {
+  document.getElementById("scaryScreen").classList.add("hidden");
+  showSlide(2);
+}
+
+function finishWebsite() {
+  document.getElementById("slide3").classList.add("hidden");
+  document.getElementById("endMessage").classList.remove("hidden");
+}
+</script>
+
+</body>
+</html>
